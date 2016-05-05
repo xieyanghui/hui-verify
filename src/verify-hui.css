@@ -1,0 +1,19 @@
+/*外部*/
+.verify_megs{
+    width: 190px;
+    height: 60px;
+    display: inline;
+}
+/*验证失败*/
+.verify_er{
+    color: red;
+    line-height: 14px;
+    vertical-align:middle;
+
+}
+/*验证成功*/
+.verify_su{
+    line-height: 14px;
+    vertical-align:middle;
+    color: green;
+}

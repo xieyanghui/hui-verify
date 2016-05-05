@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>单个表单验证</title>
+    <link href="../src/verify-hui.css" type="text/css" charset="utf-8" rel="stylesheet"/>
+    <style rel="stylesheet" type="text/css">
+        #err{
+            float: right;
+            border: 1px solid #999;
+        }
+    </style>
+</head>
+<body>
+<input type="text" name="one"  id = 'one' />
+
+<div id ='err'>
+
+</div>
+</body>
+<script type="text/javascript" charset="utf-8" src="../lib/jquery-2.2.1.js"></script>
+<script type="text/javascript" charset="utf-8" src="../src/verify-hui.min.js"></script>
+<script>
+    $(function(){
+        verify.verifyInput('one',{
+            check:['noNull','noSpechars'],//验证列表
+            name:'用户名',//输出默认消息时的名称
+            method:'input propertychange blur',//触发方法 默认是blur
+            megs:{noNull:'重要的东西不能为空',noSpechars:'只能用E文'},
+            location:'err'          //要显示元素的ID/或选择器
+//            location:function(){      //相对元素的位置
+//                return $(this).nextAll('div');
+//            }
+        });
+    });
+</script>
+</html>

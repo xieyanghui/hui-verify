@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>form表单验证</title>
+    <link href="../src/verify-hui.css" type="text/css" charset="utf-8" rel="stylesheet"/>
+    <style rel="stylesheet" type="text/css">
+        #err{
+            float: left;
+            border: 1px solid #999;
+        }
+        #err >span{
+            display: block;
+        }
+    </style>
+</head>
+<body>
+<form id="testForm">
+
+   一 <input type="text" name="one"   /><br/>
+   二 <input type="text" name="two"   /><br/>
+   三 <input type="text" name="three" /><br/>
+</form>
+
+<div id ='err'>
+</div>
+</body>
+<script type="text/javascript" charset="utf-8" src="../lib/jquery-2.2.1.js"></script>
+<script type="text/javascript" charset="utf-8" src="../src/verify-hui.js"></script>
+<script>
+    $(function(){
+        verify.verifyForm('testForm',{
+            //验证列表
+            one: {
+                check: ['noSpechars'],//验证列表
+                name: '1'//输出默认消息时的名称
+            },
+            two: {
+                check: ['null', {'length':[3,5]}],//验证列表
+                name: '2',//输出默认消息时的名称
+                location:""  //覆盖全局的位置
+            },
+            three: {
+                check: ['noNull', 'phone'],//验证列表
+                name: '3',//输出默认消息时的名称
+                method:'blur'//覆盖全局事件
+            }
+        }, {
+            //异步提交
+            'success':function(){
+                console.log('提交后回调函数');
+            },
+            'before':function(){
+                console.log('提交前执行');
+            }
+        },
+        'err',//全局location输出
+        'input'//全局事件
+        );
+    });
+</script>
+</html>
